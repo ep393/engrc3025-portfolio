@@ -27,6 +27,70 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+
+  <style>
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    .modal-content {
+      position: relative;
+      background-color: #fefefe;
+      margin: 15% auto;
+      /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      /* Could be more or less, depending on screen size */
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content h2 {
+      text-align: center;
+      /* Centering only the modal header */
+    }
+
+    .modal-content p,
+    .modal-content ul {
+      text-align: left;
+      /* Ensuring text and list are left-aligned */
+      margin-left: 20px;
+      /* Adding some left margin to the list for better readability */
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+
+
 </head>
 
 <body>
@@ -90,7 +154,7 @@
                 I design visualizations to make your data <br>
                 understandable and beautiful.
               </p>
-              <a href="" class="">
+              <a href="resume.pdf" class="download-button" download>
                 Download Resume
               </a>
             </div>
@@ -144,10 +208,10 @@
         <div class="col-md-6">
           <div class="img_container">
             <div class="img-box b1">
-              <img src="images/placeholder-face.png" alt="" />
+              <img src="images/aboutme1.png" alt="" />
             </div>
             <div class="img-box b2">
-              <img src="images/placeholder-face.png" alt="" />
+              <img src="images/aboutme2.png" alt="" />
             </div>
           </div>
 
@@ -168,76 +232,89 @@
       </div>
 
       <div class="service_container">
-        <div class="box">
+
+        <div class="box" onclick="openModal('dataManagement')">
           <div class="img-box">
-            <img src="images/s1.png" class="img1" alt="">
+            <img src="images/datamanagement.png" class="img1" alt="">
           </div>
           <div class="detail-box">
             <h5>
               Data Management
             </h5>
             <p>
-              There are many variations of passages of Lorem Ipsum available,
+              Data harvesting, cleaning and reshaping. Development of automated workflows.
             </p>
           </div>
         </div>
-        <div class="box">
+
+        <div class="box" onclick="openModal('dataMining')">
           <div class="img-box">
-            <img src="images/s2.png" class="img1" alt="">
+            <img src="images/datamining.png" class="img1" alt="">
           </div>
           <div class="detail-box">
             <h5>
               Data Mining
             </h5>
             <p>
-              There are many variations of passages of Lorem Ipsum available,
+              Data exploration, application of statistical methods, reproducible data analysis.
             </p>
           </div>
         </div>
-        <div class="box">
+
+        <div class="box" onclick="openModal('dataViz')">
           <div class="img-box">
-            <img src="images/s3.png" class="img1" alt="">
+            <img src="images/dataviz.png" class="img1" alt="">
           </div>
           <div class="detail-box">
             <h5>
               Data Visualization
             </h5>
             <p>
-              There are many variations of passages of Lorem Ipsum available,
+              Creation of static and interactive dataviz and dashboards, review of scientific figures.
             </p>
           </div>
         </div>
-        <div class="box ">
+
+        <div class="box" onclick="openModal('dataAnalysis')">
           <div class="img-box">
-            <img src="images/s4.png" class="img1" alt="">
+            <img src="images/dataanalysis.png" class="img1" alt="">
           </div>
           <div class="detail-box">
             <h5>
               Data Analysis
             </h5>
             <p>
-              There are many variations of passages of Lorem Ipsum available,
+              Advanced statistical analysis to uncover trends and insights.
             </p>
           </div>
         </div>
-        <div class="box">
+
+        <div class="box" onclick="openModal('machineLearning')">
           <div class="img-box">
-            <img src="images/s5.png" class="img1" alt="">
+            <img src="images/ml.png" class="img1" alt="">
           </div>
           <div class="detail-box">
             <h5>
-              [insert one more]
+              Machine Learning
             </h5>
             <p>
-              There are many variations of passages of Lorem Ipsum available,
+              Implementation of algorithms for predictive accuracy and automation.
             </p>
           </div>
+
+          <div id="commonModal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closeModal(event)">&times;</span>
+              <h2 id="modalTitle">Skill Title</h2>
+              <p id="modalIntro">I can help with:</p>
+              <ul id="modalList">
+                <!-- List items will be added dynamically -->
+              </ul>
+            </div>
+          </div>
+
+
         </div>
-      </div>
-      <div class="btn-box">
-        <a href="">
-          Read More
-        </a>
       </div>
     </div>
   </section>
@@ -256,7 +333,7 @@
         <div class="col-md-6">
           <div class="box">
             <div class="img-box">
-              <img src="images/placeholder-image.png" alt="">
+              <img src="images/hw2.png" alt="">
             </div>
             <div class="detail-box">
               <h5>
@@ -272,7 +349,7 @@
         <div class="col-md-6">
           <div class="box">
             <div class="img-box">
-              <img src="images/placeholder-image.png" alt="">
+              <img src="images/hw4.png" alt="">
             </div>
             <div class="detail-box">
               <h5>
@@ -418,6 +495,93 @@
 
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.js"></script>
+
+  <script>
+    // Define skill data
+    const skillData = {
+      "dataManagement": {
+        title: "Data Management",
+        points: [
+          "Harvest data from different sources like APIs, SQL databases, or messy Excel spreadsheets.",
+          "Reformat and reshape data to make further analyses easier.",
+          "Clean datasets by removing outliers and aberrant data.",
+          "Create reproducible data preparation workflows.",
+          "Automatize the creation of data-related reports."
+        ]
+      },
+      "dataMining": {
+        title: "Data Mining",
+        points: [
+          "Exploratory analysis of a dataset.",
+          "Creation of clean and reproducible reports using R Markdown.",
+          "Application of statistical methods on your dataset.",
+          "Creation of custom scripts for analysing your data automatically."
+        ]
+      },
+      "dataViz": {
+        title: "Data Visualization",
+        points: [
+          "Creation and review of graphs for scientific publication.",
+          "Development of data application using R and Shiny.",
+          "Creation of custom data visualization for the web using d3.js.",
+          "Dashboard creation for real time data analysis.",
+          "Visualization of geospatial data."
+        ]
+      },
+      "dataAnalysis": {
+        title: "Data Analysis",
+        points: [
+          "Apply complex statistical techniques to extract meaningful patterns from large datasets.",
+          "Utilize advanced analytics tools like Python and R to conduct deep dives into data.",
+          "Perform multivariate regression and time series analysis for predictive insights.",
+          "Develop and test hypotheses to validate data trends and relationships.",
+          "Generate actionable insights through rigorous data interrogation."
+        ]
+      },
+      "machineLearning": {
+        title: "Machine Learning",
+        points: [
+          "Design and train machine learning models using frameworks like TensorFlow and Scikit-learn.",
+          "Apply supervised, unsupervised, and reinforcement learning techniques to solve business problems.",
+          "Optimize machine learning algorithms for accuracy and efficiency in predictive modeling.",
+          "Deploy machine learning models into production environments.",
+          "Utilize neural networks for image recognition and natural language processing tasks."
+        ]
+      }
+    };
+
+    // Function to open modal and set content based on skill
+    function openModal(skillKey) {
+      const data = skillData[skillKey];
+      document.getElementById("modalTitle").innerText = data.title;
+      const list = document.getElementById("modalList");
+      list.innerHTML = ""; // Clear previous list items
+      data.points.forEach(point => {
+        const li = document.createElement("li");
+        li.innerText = point;
+        list.appendChild(li);
+      });
+      document.getElementById("commonModal").style.display = "block";
+    }
+
+    // Function to close the modal
+    function closeModal(event) {
+      if (event) {
+        event.stopPropagation(); // This stops the event from bubbling up further
+      }
+      var modal = document.getElementById("commonModal");
+      modal.style.display = "none";
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function (event) {
+      const modal = document.getElementById("commonModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
 
 </body>
 
