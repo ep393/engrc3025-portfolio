@@ -88,6 +88,19 @@
       text-decoration: none;
       cursor: pointer;
     }
+
+    .download-button {
+      display: inline-block;
+      padding: 10px 35px;
+      background-color: #4b208c;
+      color: #ffffff;
+      border-radius: 5px;
+      margin: 25px 0 45px 0;
+    }
+
+    .download-button:hover {
+      background-color: #5625a1;
+    }
   </style>
 
 
@@ -214,9 +227,7 @@
               <img src="images/aboutme2.png" alt="" />
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   </section>
@@ -333,23 +344,26 @@
         <div class="col-md-6">
           <div class="box">
             <div class="img-box">
-              <img src="images/hw2.png" alt="">
+              <img src="images/p1.png" alt="">
             </div>
             <div class="detail-box">
               <h5>
+                <br>
                 Friends Network Visualization
               </h5>
               <p>
                 An interactive network visualization that illustrates the connections and relationships between some of
-                the characters of the show Friends.
+                the characters of the famous TV show Friends.
               </p>
+              <a href="https://ep393.github.io/info4310-hw2/" target="_blank">Project Page</a> |
+              <a href="https://github.com/ep393/info4310-hw2" target="_blank">GitHub Repo</a>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="box">
             <div class="img-box">
-              <img src="images/hw4.png" alt="">
+              <img src="images/p2.png" alt="">
             </div>
             <div class="detail-box">
               <h5>
@@ -359,13 +373,65 @@
                 Americans love their alcohol. The map offers a visual representation of these consumption
                 patterns, with each state's alcohol intake displayed in varying shades of blue.
               </p>
+              <a href="https://ep393.github.io/info4310-hw4/" target="_blank">Project Page</a> |
+              <a href="https://github.com/ep393/info4310-hw4" target="_blank">GitHub Repo</a>
             </div>
           </div>
         </div>
       </div>
+      <!-- Additional projects (hidden by default) -->
+      <!-- Additional projects (hidden by default) -->
+      <div id="moreProjects" style="display:none;">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/p3.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Explore Boston's Best Eateries
+                </h5>
+                <p>
+                  An interactive map-based tool for exploring a comprehensive dataset of Boston's restaurants, providing
+                  users with filtering options based on cuisine, ratings, and geographical location to tailor their
+                  dining experience.
+                </p>
+                <a href="https://ep393.github.io/info4310-hw3/" target="_blank">Project Page</a> | <a
+                  href="https://github.com/ep393/info4310-hw3" target="_blank">GitHub Repo</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/p4.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  The 2024 Atlantic Hurricane Season: How bad could it be?
+                </h5>
+                <p>
+                  This project aims to educate the general public about the 2024 Atlantic hurricane season by tracing
+                  the path of Hurricane Katrina.
+                </p>
+                <a href="https://jgreene114.github.io/INFO4310-FP/" target="_blank">Project Page</a> | <a
+                  href="https://github.com/jgreene114/INFO4310-FP" target="_blank">GitHub Repo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Read More and Show Less Buttons -->
+      <div class="row mt-4" id="buttonContainer">
+        <div class="col-12 text-center">
+          <a href="javascript:void(0);" class="download-button" id="toggleButton" onclick="toggleProjects()">
+            Read More
+          </a>
+        </div>
+      </div>
     </div>
   </section>
-
   <!-- end projects section -->
 
 
@@ -576,6 +642,23 @@
       if (event.target == modal) {
         modal.style.display = "none";
       }
+    }
+
+    function toggleProjects() {
+      var moreProjects = document.getElementById('moreProjects');
+      var buttonContainer = document.getElementById('buttonContainer');
+      var toggleButton = document.getElementById('toggleButton');
+
+      if (moreProjects.style.display === 'none') {
+        moreProjects.style.display = 'block'; // Shows more projects
+        toggleButton.textContent = 'Show Less'; // Changes button text to 'Show Less'
+      } else {
+        moreProjects.style.display = 'none'; // Hides the additional projects
+        toggleButton.textContent = 'Read More'; // Changes button text back to 'Read More'
+      }
+
+      // Move the button container to the end of the projects section
+      document.querySelector('#projects .container').appendChild(buttonContainer);
     }
   </script>
 
